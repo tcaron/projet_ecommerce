@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h2>{{ 'product_list'|trans }}</h2>
+
+    {% for product in products %}
+
+        {% include 'default/_product_details.html.twig' %}
+        <hr />
+    {% endfor %}
+
+{% endblock %}

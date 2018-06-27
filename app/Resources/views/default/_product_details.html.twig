@@ -1,0 +1,23 @@
+    <h3><a href="{{ path('product_details', {'id': product.id}) }}">{{ product.name }}</a></h3>
+    <div>
+        {% if product.stock != 0 %}
+        <form action="{{ path('add_to_cart') }}" method="post">
+            <label for="qte">Qte:</label></label><input id="qte" name="qte" type="number" max="{{ product.stock }}" min="1" value="1">
+            <input type="hidden" name="product_id" value="{{ product.id }}" />
+            <button type="submit" class="btn btn-primary">Add to cart</button>
+        </form>
+        {% endif %}
+        {{ render(controller(
+            'AppBundle:Default:showProductInCart',
+            { 'productId': product.id }
+        )) }}
+    </div>
+
+    {% for photo in product.photos %}
+        <img src="{{ photo.path }}" alt="{{ photo.product.name }}" style="max-width:70%" />
+    {% endfor %}
+
+    <ul>
+        <li>Prix HT : {{ product.price|displayPrice }}</li>
+        <li>Prix TTC : {{ priceTTC(product.price) }} €</li>
+    </ul>

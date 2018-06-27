@@ -1,0 +1,14 @@
+{% if most_viewed_products is not empty %}
+
+    <h2>Les produits les plus vus</h2>
+
+    <div class="list-group">
+    {% for product in most_viewed_products %}
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+            {% include 'default/_product_details.html.twig' %}
+
+        </div>
+    {% endfor %}
+    </div>
+
+{% endif %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>{{ 'category_name'|trans({'%category%': category.name }) }}</h2>
+
+    {% for product in category.products %}
+        {{ include('default/_product_details.html.twig') }}
+    {% endfor %}
+
+{% endblock %}
+
